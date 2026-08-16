@@ -1,0 +1,14 @@
+{
+  "pkg": "dsh-client-ui-theme",
+  "entries": [
+    {
+      "ns": "settings.theme",
+      "dict": {
+        "appearance.title": "外观",
+        "appearance.light": "浅色",
+        "appearance.dark": "深色",
+        "appearance.system": "跟随系统"
+      }
+    }
+  ]
+}

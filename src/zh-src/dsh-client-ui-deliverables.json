@@ -1,0 +1,15 @@
+{
+  "pkg": "dsh-client-ui-deliverables",
+  "entries": [
+    {
+      "ns": "deliverables",
+      "dict": {
+        "produced.label": "产物",
+        "produced.moreOne": "+ 1 个文件",
+        "produced.more": "+ {count} 个文件",
+        "produced.open": "打开 {name}",
+        "produced.showInFolder": "在文件夹中显示"
+      }
+    }
+  ]
+}

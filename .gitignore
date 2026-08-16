@@ -1,0 +1,13 @@
+# Dependencies
+node_modules/
+
+# 開發/驗證產物
+verify/*.png
+verify/*.txt
+src/zh-tw-parts/collected-chars.txt
+
+# 編輯器 / 系統
+.DS_Store
+Thumbs.db
+*.log
+*.bak

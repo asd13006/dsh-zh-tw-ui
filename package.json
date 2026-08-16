@@ -1,0 +1,56 @@
+{
+  "name": "dsh-locale-zh-tw",
+  "description": "DSH Web UI 繁體中文插件：新增「繁體中文」語言選項，將全部介面字串翻譯成地道繁體中文（英文保持英文）",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./index.mjs",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./index.mjs"
+    },
+    "./client": {
+      "default": "./lib/client.js"
+    },
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-locale"
+      ],
+      "platform": "web"
+    }
+  },
+  "peerDependencies": {
+    "cordis": ">=4.0.0-rc.8 <5.0.0",
+    "@deepseek-ai/dsh-client-locale": ">=0.1.0-rc.6",
+    "@deepseek-ai/dsh-settings": ">=0.1.0-rc.6",
+    "@deepseek-ai/schemastery": ">=3.0.0"
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh-plugin",
+    "dsh",
+    "locale",
+    "i18n",
+    "traditional-chinese",
+    "zh-TW",
+    "繁體中文"
+  ],
+  "files": [
+    "index.mjs",
+    "index.d.ts",
+    "lib/client.js",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE",
+    "src"
+  ],
+  "license": "MIT"
+}
