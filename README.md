@@ -15,15 +15,23 @@
 
 ## 安裝方式
 
-**本地安裝（發佈至 npm 前推薦）**：clone 或下載本倉庫後，在 `~/.dsh/profiles/web/package.json` 的 `dependencies` 中加入 `"dsh-zh-tw-ui": "file:<本倉庫路徑>"`，並在 `dsh.profile.bundles` 中加入 `"dsh-zh-tw-ui"`，然後在 profile 目錄執行：
+**推薦：GitHub 安裝（可直接把此連結交給 agent 或自行執行）**
 
 ```bash
-pnpm install
+dsh plugin --profile web add https://github.com/asd13006/dsh-zh-tw-ui
 ```
 
-最後重啟 `dsh web`，在「設定 → 通用 → 語言」中選擇「繁體中文」即可。
+或直接讓 agent 安裝：把本倉庫連結貼給 DSH 的 agent，指示其執行上述命令即可。
 
-**npm 安裝（發佈後）**：
+安裝後重啟 `dsh web`，在「設定 → 通用 → 語言」中選擇「繁體中文」即可。
+
+**移除（重要）**：請使用 `dsh plugin remove`，它會同步清理 profile 的 bundle 清單；手動刪除套件可能導致殘留引用令 DSH 無法啟動：
+
+```bash
+dsh plugin --profile web remove dsh-zh-tw-ui
+```
+
+**npm 安裝（發佈至 npm 後可用）**：
 
 ```bash
 dsh plugin --profile web add dsh-zh-tw-ui
