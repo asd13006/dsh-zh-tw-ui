@@ -1,0 +1,5 @@
+# 統一換行：源碼與數據檔以 LF 存入 git（GitHub 檢視一致，避免 Windows CRLF 噪音）
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.svg text eol=lf
