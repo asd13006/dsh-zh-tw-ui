@@ -100,6 +100,14 @@ dsh-locale-zh-tw/
 - 語言偏好存於瀏覽器 `localStorage`（每瀏覽器獨立）；內建 locale 對 remote browser 本來就唔持久，呢個係一致嘅設計。
 - 字元表未收錄嘅簡體字會原樣透傳——用 `check-missing-chars.mjs` 定期檢查補表。
 
+## 安全性與私隱
+
+- **無網路通訊**：插件唔會發起任何網路請求（無 fetch / WebSocket / 上報）；唯一對外 URL 只係 README 入面嘅文件連結。
+- **無收集資料**：冇 telemetry、冇 analytics、冇錯誤上報；唯一持久化資料係瀏覽器 `localStorage["dsh-locale-zh-tw.preference"]`（值只係 `"zh-TW"` 或冇）。
+- **唔掂敏感資料**：唔讀寫 credentials / tokens / 會話記錄 / 檔案系統；Host 側（`index.mjs`）只註冊一個 settings schema，其餘一無所動。
+- **DOM 轉換只讀**：只改 DOM 文字節點（text node），冇 innerHTML、冇注入；輸入框、textarea、contenteditable、代碼塊（pre/code）一律排除，唔會影響你打字或代碼。顯示層嘅會話訊息會被轉換（唯讀顯示效果，底層資料不變），切返其他語言自動還原。
+- **零供應鏈面**：`dependencies` 為空，安裝時唔會下載任何新套件；client bundle 自包含（零 `require`）；peer 依賴全部係 DSH 本機已有嘅官方套件。
+
 ## License
 
 MIT
