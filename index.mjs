@@ -1,4 +1,4 @@
-// index.mjs — dsh-locale-zh-tw 插件（Host 侧）
+// index.mjs — dsh-zh-tw-ui 插件（Host 侧）
 //
 // 声明自有 settings namespace "zh-tw"（字段 preference: "zh-TW" | null），用于
 // 持久化用户对「繁體中文」语言的选择。
@@ -15,7 +15,7 @@
 import { settingsNamespace } from "@deepseek-ai/dsh-settings";
 import z from "@deepseek-ai/schemastery";
 
-const name = "zh-tw-locale";
+const name = "zh-tw-ui";
 const inject = ["settings"];
 
 function apply(ctx) {

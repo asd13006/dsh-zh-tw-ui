@@ -29,7 +29,7 @@ const DICTS_JSON = JSON.stringify(dicts, null, 2);
 const CHARS_JSON = JSON.stringify(CHARS);
 
 const clientJs = `/* global window */
-// lib/client.js — dsh-locale-zh-tw 的 Browser 侧 bundle（手写 CJS factory，供 dsh web
+// lib/client.js — dsh-zh-tw-ui 的 Browser 侧 bundle（手写 CJS factory，供 dsh web
 // 客户端 ModuleLoader 注入）。
 //
 // 职责：
@@ -48,7 +48,7 @@ const clientJs = `/* global window */
 // 依赖注入：@deepseek-ai/dsh-client-locale（locale 服务）；locale 服务缺失时
 // 静默降级（不注册字典、不改语言行），不破坏其他插件。
 window.__ModuleLoader__.load({
-  id: "dsh-locale-zh-tw",
+  id: "dsh-zh-tw-ui",
   factory: (require) => {
     var module = { exports: {} };
     var exports = module.exports;
@@ -56,7 +56,8 @@ window.__ModuleLoader__.load({
 
     const LOCALE_ID = "zh-TW";
     const LOCALE_LABEL = "繁體中文";
-    const STORAGE_KEY = "dsh-locale-zh-tw.preference";
+    const STORAGE_KEY = "dsh-zh-tw-ui.preference";
+    const LEGACY_STORAGE_KEY = "dsh-locale-zh-tw.preference"; // 舊包名遷移
 
     // 全部 namespace 的 zh-TW 字典（由 scripts/assemble.mjs 生成；精译质量基准）
     const DICTS = ${DICTS_JSON};
@@ -64,7 +65,7 @@ window.__ModuleLoader__.load({
     // 单字简→繁字元表（运行时自动转换兜底；scripts/verify-converter.mjs 校验）
     const CHARS = ${CHARS_JSON};
 
-    const name = "zh-tw-locale";
+    const name = "zh-tw-ui";
     const inject = [];
 
     // 纯单字简→繁转换（不做術語片語；{佔位符} 内无汉字，天然安全）。
@@ -87,12 +88,25 @@ window.__ModuleLoader__.load({
     }
 
     function readPref() {
-      try { return window.localStorage.getItem(STORAGE_KEY); } catch { return null; }
+      try {
+        let value = window.localStorage.getItem(STORAGE_KEY);
+        if (value === null) {
+          // 舊包名（dsh-locale-zh-tw）的偏好遷移
+          const legacy = window.localStorage.getItem(LEGACY_STORAGE_KEY);
+          if (legacy !== null) {
+            window.localStorage.setItem(STORAGE_KEY, legacy);
+            window.localStorage.removeItem(LEGACY_STORAGE_KEY);
+            value = legacy;
+          }
+        }
+        return value;
+      } catch { return null; }
     }
     function writePref(value) {
       try {
         if (value === null || value === undefined) window.localStorage.removeItem(STORAGE_KEY);
         else window.localStorage.setItem(STORAGE_KEY, value);
+        window.localStorage.removeItem(LEGACY_STORAGE_KEY);
       } catch { /* 隐私模式等：忽略，语言选择在本次会话内生效 */ }
     }
 
@@ -174,16 +188,16 @@ window.__ModuleLoader__.load({
     function apply(ctx) {
       const locale = ctx.get("locale");
       if (!locale || typeof locale.register !== "function" || typeof locale.getLocale !== "function") {
-        console.warn("[dsh-locale-zh-tw] locale 服务不可用，插件静默降级");
+        console.warn("[dsh-zh-tw-ui] locale 服务不可用，插件静默降级");
         return;
       }
 
       // 1) 注册 zh-TW 字典（单 locale 形态；重复注册会抛错，逐个 try）
       for (const [ns, dict] of Object.entries(DICTS)) {
         try {
-          ctx.effect(() => locale.register(ns, LOCALE_ID, dict), "zh-tw-locale: " + ns);
+          ctx.effect(() => locale.register(ns, LOCALE_ID, dict), "zh-tw-ui: " + ns);
         } catch (error) {
-          console.error("[dsh-locale-zh-tw] register", ns, error);
+          console.error("[dsh-zh-tw-ui] register", ns, error);
         }
       }
 
@@ -219,7 +233,7 @@ window.__ModuleLoader__.load({
         });
         locale.publish(snapshot.active, true);
       } catch (error) {
-        console.error("[dsh-locale-zh-tw] patch snapshot", error);
+        console.error("[dsh-zh-tw-ui] patch snapshot", error);
       }
 
       // 3) 包装 setLocale：zh-TW 走自有路径，其余（zh/en）走原逻辑并清除偏好
