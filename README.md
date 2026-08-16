@@ -116,6 +116,20 @@ dsh-zh-tw-ui/
 - **DOM 轉換為唯讀**：僅修改 DOM 文字節點（text node），無 innerHTML、無注入；輸入框、textarea、contenteditable、代碼塊（pre/code）一律排除，不影響用戶輸入或程式碼。顯示層的會話訊息會被轉換（僅為唯讀顯示效果，底層資料不變），切換回其他語言時自動還原。
 - **零供應鏈風險**：`dependencies` 為空，安裝時不會下載任何新套件；client bundle 完全自包含（零 `require`）；peer 依賴均為 DSH 本機已有的官方套件。
 
+## 常見問題（FAQ）
+
+**Q：插件市場（dshmarket）點解冇顯示我個插件的介紹？**
+A：市場的介紹與分類來自「awesome-dsh-plugin」策展 registry（`data/plugins/<owner>__<repo>.yml`），並非讀取本地 package.json。提交 `registry-entry.yml` 到該 registry（需 repo 建立滿 1 日且 ≥ 10 個 commit）後即會顯示。
+
+**Q：版本號一定要發佈 npm 先有？**
+A：唔使。已安裝插件的版本號由本地 `node_modules` 的 package.json 讀取（GitHub 安裝版同樣顯示 `v0.1.0`）。npm 發佈只影響「npm 搜尋」與「純 npm 安裝」體驗，與市場顯示無關。
+
+**Q：官方更新 UI 或加了新字串，插件要更新嗎？**
+A：無需等待插件更新——運行時簡→繁自動轉換會即時覆蓋任何新字串；第三方插件的簡中字串亦自動轉換。精譯字典可用 `scripts/` 重新生成以保持最佳品質。
+
+**Q：移除插件後 DSH 無法啟動？**
+A：請務必使用 `dsh plugin --profile web remove dsh-zh-tw-ui` 移除（會同步清理 profile 的 bundle 清單）。手動刪除套件可能留下殘留引用令 DSH 啟動失敗。
+
 ## License
 
 MIT
