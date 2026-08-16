@@ -15,15 +15,19 @@
 
 ## 安裝
 
-加入 web profile（`~/.dsh/profiles/web`）：
+**本地安裝（發佈到 npm 前推薦）**：clone/下載本倉庫後，喺 `~/.dsh/profiles/web/package.json` 嘅 `dependencies` 加入 `"dsh-locale-zh-tw": "file:<本倉庫路徑>"`，`dsh.profile.bundles` 加入 `"dsh-locale-zh-tw"`，然後喺 profile 目錄執行：
+
+```bash
+pnpm install
+```
+
+最後重啟 `dsh web`，喺 設定 → 通用 → 語言 揀「繁體中文」即可。
+
+**npm 安裝（發佈後）**：
 
 ```bash
 dsh plugin --profile web add dsh-locale-zh-tw
 ```
-
-或手動：喺 `~/.dsh/profiles/web/package.json` 嘅 `dependencies` 加入 `"dsh-locale-zh-tw": "file:<此插件路徑>"`，`dsh.profile.bundles` 加入 `"dsh-locale-zh-tw"`，然後喺 profile 目錄執行 `pnpm install`，最後重啟 `dsh web`。
-
-之後喺 設定 → 通用 → 語言 揀「繁體中文」即可。
 
 ## 點樣運作
 
