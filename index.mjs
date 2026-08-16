@@ -1,30 +1,16 @@
 // index.mjs — dsh-zh-tw-ui 插件（Host 侧）
 //
-// 声明自有 settings namespace "zh-tw"（字段 preference: "zh-TW" | null），用于
-// 持久化用户对「繁體中文」语言的选择。
-//
-// 注：当前版本 client 侧用 localStorage 持久化（语言偏好本就是浏览器本地偏好，
-// 且 dsh-host-apiproxy 的 settings 白名单 WEB_SETTINGS_NAMESPACES 为硬编码，插件
-// 无法 expose 自定义 namespace——官方注释亦标明该能力是 deferred work）。
-// 此处的 namespace 注册保留为契约声明：若未来 apiproxy 开放插件 namespace，
-// client 可直接切回 settings 通道。
-//
-// 参考 dsh-client-locale 的 host 注册姿势：ctx.inject(["settings"], …) 延迟挂载，
-// settings 服务不可用（headless / 无 Web profile）时插件照常 apply。
-
-import { settingsNamespace } from "@deepseek-ai/dsh-settings";
-import z from "@deepseek-ai/schemastery";
+// 本插件為純 client 插件：語言選擇經瀏覽器 localStorage 持久化，Host 側無需
+// 任何服務。此入口僅因 cordis.patch.yml 的 bundle 機制需要一個可解析的包主入口
+// （插件要經「insert 一個 host entry」先會被 profile 載入，client 入口依附其上）。
+// 保持 apply 為 no-op：唔註冊任何 settings namespace、唔 import 任何 host 套件，
+// 將 host 側表面降至最低（少一個出錯位，亦無需 dsh-settings / schemastery 依賴）。
 
 const name = "zh-tw-ui";
-const inject = ["settings"];
+const inject = [];
 
-function apply(ctx) {
-  ctx.inject(["settings"], (settingsCtx) => {
-    settingsCtx.settings.register(
-      settingsNamespace("zh-tw"),
-      z.object({ preference: z.string().required(false) }),
-    );
-  });
+function apply() {
+  // no-op：功能全部在 client 側（lib/client.js）。
 }
 
 export { apply, inject, name };

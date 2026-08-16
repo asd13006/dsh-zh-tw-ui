@@ -29,9 +29,7 @@
   },
   "peerDependencies": {
     "cordis": ">=4.0.0-rc.8 <5.0.0",
-    "@deepseek-ai/dsh-client-locale": ">=0.1.0-rc.6",
-    "@deepseek-ai/dsh-settings": ">=0.1.0-rc.6",
-    "@deepseek-ai/schemastery": ">=3.0.0"
+    "@deepseek-ai/dsh-client-locale": ">=0.1.0-rc.6"
   },
   "keywords": [
     "deepseek-harness",

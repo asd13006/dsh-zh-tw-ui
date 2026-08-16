@@ -87,7 +87,7 @@ node scripts/check-missing-chars.mjs                  # 列出字元表未收錄
 ```
 dsh-zh-tw-ui/
 ├── package.json              # 插件清單（dsh.client.inject / bundle.patch）
-├── index.mjs                 # Host 側：聲明 settings namespace「zh-tw」（契約保留）
+├── index.mjs                 # Host 側：no-op 入口（純 client 插件）
 ├── cordis.patch.yml          # Host 插件入口
 ├── lib/client.js             # 生成的 browser bundle（請勿手動修改）
 ├── src/
@@ -112,7 +112,7 @@ dsh-zh-tw-ui/
 
 - **無網路通訊**：插件不會發起任何網路請求（無 fetch / WebSocket / 上報）；唯一的對外 URL 僅為 README 中的文件連結。
 - **不收集資料**：無 telemetry、無 analytics、無錯誤上報；唯一持久化的資料是瀏覽器 `localStorage["dsh-zh-tw-ui.preference"]`（值僅為 `"zh-TW"` 或不存在）。
-- **不觸及敏感資料**：不讀寫 credentials / tokens / 會話記錄 / 檔案系統；Host 側（`index.mjs`）僅註冊一個 settings schema，其餘一無所動。
+- **不觸及敏感資料**：不讀寫 credentials / tokens / 會話記錄 / 檔案系統；Host 側（`index.mjs`）為 no-op，一無所動。
 - **DOM 轉換為唯讀**：僅修改 DOM 文字節點（text node），無 innerHTML、無注入；輸入框、textarea、contenteditable、代碼塊（pre/code）一律排除，不影響用戶輸入或程式碼。顯示層的會話訊息會被轉換（僅為唯讀顯示效果，底層資料不變），切換回其他語言時自動還原。
 - **零供應鏈風險**：`dependencies` 為空，安裝時不會下載任何新套件；client bundle 完全自包含（零 `require`）；peer 依賴均為 DSH 本機已有的官方套件。
 
