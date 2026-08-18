@@ -1,0 +1,14 @@
+{
+  "pkg": "dsh-client-ui-sidebar",
+  "entries": [
+    {
+      "ns": "sidebar",
+      "dict": {
+        "session.new": "Neue Session",
+        "session.new.label": "Neue Session",
+        "toggle.open": "Seitenleiste öffnen",
+        "toggle.collapse": "Seitenleiste einklappen"
+      }
+    }
+  ]
+}

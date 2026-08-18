@@ -1,0 +1,15 @@
+{
+  "pkg": "dsh-client-ui-deliverables",
+  "entries": [
+    {
+      "ns": "deliverables",
+      "dict": {
+        "produced.label": "生成物",
+        "produced.moreOne": "+ 1 ファイル",
+        "produced.more": "+ {count} ファイル",
+        "produced.open": "{name} を開く",
+        "produced.showInFolder": "フォルダで表示"
+      }
+    }
+  ]
+}

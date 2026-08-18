@@ -1,0 +1,14 @@
+{
+  "pkg": "dsh-client-ui-plan",
+  "entries": [
+    {
+      "ns": "plan",
+      "dict": {
+        "chip.on.aria": "Mode plan activé, appuyez pour désactiver",
+        "chip.on.title": "Mode plan activé — cliquez pour désactiver (/plan off)",
+        "chip.off.aria": "Mode plan désactivé, appuyez pour activer",
+        "chip.off.title": "Mode plan désactivé — cliquez pour activer (/plan)"
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "pkg": "dsh-client-ui-skill",
+  "entries": [
+    {
+      "ns": "skill",
+      "dict": {
+        "row.running": "Chargement de la compétence",
+        "row.failed": "Échec du chargement de la compétence",
+        "row.stopped": "Chargement de la compétence interrompu",
+        "row.instructions": "Instructions",
+        "menu.userOnly": "utilisateur uniquement"
+      }
+    }
+  ]
+}

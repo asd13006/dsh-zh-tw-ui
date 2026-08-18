@@ -1,0 +1,25 @@
+{
+  "pkg": "dsh-client-ui-user-questions",
+  "entries": [
+    {
+      "ns": "question",
+      "dict": {
+        "error.incomplete": "先にこの質問に回答してください。",
+        "error.unanswered": "オプションを選択するか、カスタム回答を入力してください。",
+        "nav.prev": "前の質問",
+        "nav.next": "次の質問",
+        "nav.minimize": "質問カードを折りたたむ",
+        "nav.maximize": "質問カードを展開",
+        "nav.cancel": "すべての質問を閉じる",
+        "option.recommended": "推奨",
+        "custom.placeholder": "回答を入力",
+        "action.skip": "この質問をスキップ",
+        "action.next": "次へ",
+        "plan.header": "プラン確認",
+        "plan.approve": "承認",
+        "plan.decline": "拒否",
+        "plan.discuss": "チャットで相談"
+      }
+    }
+  ]
+}

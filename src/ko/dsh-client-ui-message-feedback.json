@@ -1,0 +1,22 @@
+{
+  "pkg": "dsh-client-ui-message-feedback",
+  "entries": [
+    {
+      "ns": "feedback",
+      "dict": {
+        "action.like": "좋은 답변",
+        "action.likeActive": "평가 제거",
+        "action.dislike": "나쁜 답변",
+        "action.dislikeActive": "평가 제거",
+        "note.open": "메모 추가",
+        "note.placeholder": "어떤 점이 좋았나요, 아니면 무엇이 문제였나요? (선택 사항)",
+        "note.save": "저장",
+        "note.cancel": "취소",
+        "note.aria": "피드백 메모",
+        "error.conflict": "이 피드백은 다른 곳에서 변경되었습니다. 최신 상태가 표시됩니다",
+        "error.load": "피드백을 불러올 수 없습니다",
+        "error.generic": "피드백을 저장할 수 없습니다"
+      }
+    }
+  ]
+}

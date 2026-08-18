@@ -1,0 +1,43 @@
+{
+  "pkg": "dsh-client-ui-subagent",
+  "entries": [
+    {
+      "ns": "subagent",
+      "dict": {
+        "diagnostic.corrupt": "セッション記録が破損しています",
+        "diagnostic.unsupported": "サポートされていないサブエージェント記録のバージョンです",
+        "diagnostic.unavailable": "セッション記録は一時的に利用できません",
+        "duration.seconds": "{seconds}秒",
+        "duration.minutes": "{minutes}分{seconds}秒",
+        "duration.hours": "{hours}時間{minutes}分{seconds}秒",
+        "duration.days": "{days}日",
+        "duration.daysHours": "{days}日{hours}時間",
+        "duration.months": "約{months}か月",
+        "duration.monthsDays": "約{months}か月{days}日",
+        "duration.years": "約{years}年",
+        "duration.yearsMonths": "約{years}年{months}か月",
+        "duration.exactDays": "{days}日{hours}時間{minutes}分{seconds}秒",
+        "duration.exactTitle": "総アクティブ時間: {duration}",
+        "loading.label": "サブエージェントを読み込み中…",
+        "loading.aria": "サブエージェントを読み込み中",
+        "load.error": "サブエージェントを読み込めませんでした",
+        "retry": "再試行",
+        "mode.oneShot": "ワンショット",
+        "mode.continuable": "継続可能",
+        "activity.running": "実行中",
+        "activity.inactive": "未実行",
+        "branch.collapse": "{label} の配下を折りたたむ",
+        "branch.expand": "{label} の配下を展開する",
+        "count.total.one": "{count}件のサブエージェント",
+        "count.total.other": "{count}件のサブエージェント",
+        "count.running.one": "{count}件のサブエージェントが実行中",
+        "count.running.other": "{count}件のサブエージェントが実行中",
+        "tree.aria": "サブエージェントのセッション",
+        "readonly.oneShot.title": "ワンショットサブエージェントの記録",
+        "readonly.title": "このサブエージェントは現在読み取り専用です",
+        "readonly.oneShot.body": "ワンショットタスクはフォローアップを受け付けません。ここで完全な実行記録を確認できます。",
+        "readonly.body": "親セッションがオフラインです。メッセージを送り続けるには親セッションを開き直してください。"
+      }
+    }
+  ]
+}

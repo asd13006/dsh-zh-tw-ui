@@ -1,0 +1,24 @@
+{
+  "pkg": "dsh-client-ui-trajectory",
+  "entries": [
+    {
+      "ns": "trajectory",
+      "dict": {
+        "view.trajectory": "궤적",
+        "toolbar.aria": "궤적 도구 모음",
+        "toolbar.duration": "소요 시간",
+        "toolbar.useActualDuration": "실제 소요 시간 사용",
+        "toolbar.useEqualWidth": "작업을 균등 너비로 표시",
+        "toolbar.actualTime": "실제 시간",
+        "toolbar.turns": "턴",
+        "toolbar.expandTurns": "턴 펼치기",
+        "toolbar.collapseTurns": "턴 접기",
+        "toolbar.calls": "호출",
+        "toolbar.expandCalls": "호출 펼치기",
+        "toolbar.collapseCalls": "호출 접기",
+        "toolbar.search": "궤적 검색",
+        "toolbar.searchPlaceholder": "검색"
+      }
+    }
+  ]
+}

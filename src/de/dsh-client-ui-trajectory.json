@@ -1,0 +1,24 @@
+{
+  "pkg": "dsh-client-ui-trajectory",
+  "entries": [
+    {
+      "ns": "trajectory",
+      "dict": {
+        "view.trajectory": "Trajektorie",
+        "toolbar.aria": "Trajektorie-Symbolleiste",
+        "toolbar.duration": "Dauer",
+        "toolbar.useActualDuration": "Tatsächliche Dauer verwenden",
+        "toolbar.useEqualWidth": "Operationen mit gleicher Breite verwenden",
+        "toolbar.actualTime": "Tatsächliche Zeit",
+        "toolbar.turns": "Runden",
+        "toolbar.expandTurns": "Runden erweitern",
+        "toolbar.collapseTurns": "Runden einklappen",
+        "toolbar.calls": "Aufrufe",
+        "toolbar.expandCalls": "Aufrufe erweitern",
+        "toolbar.collapseCalls": "Aufrufe einklappen",
+        "toolbar.search": "Trajektorie durchsuchen",
+        "toolbar.searchPlaceholder": "Suchen"
+      }
+    }
+  ]
+}

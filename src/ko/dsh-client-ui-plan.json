@@ -1,0 +1,14 @@
+{
+  "pkg": "dsh-client-ui-plan",
+  "entries": [
+    {
+      "ns": "plan",
+      "dict": {
+        "chip.on.aria": "계획 모드 켜짐, 누르면 꺼짐",
+        "chip.on.title": "계획 모드 켜짐 — 클릭하여 끄기(/plan off)",
+        "chip.off.aria": "계획 모드 꺼짐, 누르면 켜짐",
+        "chip.off.title": "계획 모드 꺼짐 — 클릭하여 켜기(/plan)"
+      }
+    }
+  ]
+}

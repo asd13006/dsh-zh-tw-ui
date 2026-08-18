@@ -1,16 +1,16 @@
-# dsh-zh-tw-ui
+# dsh-multi-lang-ui
 
-將 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) Web UI 一鍵切換為**繁體中文**的插件。
+將 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) Web UI 一鍵切換為多種語言的插件（**繁體中文 / 日本語 / 한국어 / Français / Deutsch / Español**）。
 
-> English: A DSH plugin that adds **繁體中文 (Traditional Chinese)** to the Web UI language options. Known UI strings use hand-polished translations; any *new / updated / third-party* strings are auto-converted at runtime from Simplified Chinese — so upstream UI updates and other plugins are covered **without re-translating**.
+> English: A DSH plugin that adds **multiple languages** to the Web UI language options — 繁體中文, 日本語, 한국어, Français, Deutsch, Español. Known UI strings use hand-polished translations (each language translated from the English baseline); any *new / updated / third-party* strings fall back to English (or, for 繁體中文, a runtime Simplified→Traditional converter) — so upstream UI updates and other plugins are covered **without re-translating every language**.
 
 ## 功能特性
 
-- 在「設定 → 通用 → 語言」選單中新增 **「繁體中文」**（與原有 中文 / English 並列）。
-- **706 條精譯**：官方全部 locale namespace 的 UI 字串已逐條手工翻譯為地道繁體中文（設置→設定、網絡→網路、文件→檔案、軟件→軟體、數據→資料、默認→預設、隊列→佇列、緩存→快取…；英文內容保持英文）。
-- **運行時自動轉換（備援機制）**：任何未含精譯的簡中字串（官方新版本新增或改動的字串、**第三方插件**註冊的 namespace，例如 dsh-chat-import 的「导入会话」→「導入會話」），顯示時以內置簡→繁字元表（720+ 字）即時轉為繁體。
-- **DOM 層備援轉換**：插件市場描述、README 等由數據或組件直接渲染、不經 locale 字典的內容，在繁體中文模式下以 MutationObserver 將渲染出的簡體即時轉為繁體（輸入框、代碼塊等用戶內容一律排除）；切換回其他語言時自動還原。
-- **持久化**：語言選擇存於瀏覽器 `localStorage`，重新載入或重開網頁後仍保持繁體。
+- 在「設定 → 通用 → 語言」選單中新增 **6 種語言**（繁體中文 / 日本語 / 한국어 / Français / Deutsch / Español，與原有 中文 / English 並列）。
+- **各語言逐條精譯**：官方全部 locale namespace 的 UI 字串，以**英文為基準**翻譯成各語言（繁中 706+ 條、日/韓/法/德/西各 700+ 條）。
+- **缺字串兜底**：官方新增/改動字串、第三方插件未翻譯的字串——繁體中文以內置簡→繁字元表（720+ 字）即時轉繁；其他語言 fallback 英文（en 字典官方齊備），不會出現亂碼或殘缺。
+- **DOM 層備援轉換（僅繁中）**：插件市場描述等非字典內容，繁中模式下以 MutationObserver 將渲染出的簡體即時轉繁（輸入框、代碼塊等用戶內容一律排除）。
+- **持久化**：語言選擇存於瀏覽器 `localStorage`，重新載入或重開網頁後仍保持。
 - **零侵入**：純 client 插件，不改動任何上游套件；locale 服務缺失時靜默降級，不影響其他插件。
 
 ## 安裝方式
@@ -18,23 +18,23 @@
 **推薦：GitHub 安裝（可直接把此連結交給 agent 或自行執行）**
 
 ```bash
-dsh plugin --profile web add https://github.com/asd13006/dsh-zh-tw-ui
+dsh plugin --profile web add https://github.com/asd13006/dsh-multi-lang-ui
 ```
 
 或直接讓 agent 安裝：把本倉庫連結貼給 DSH 的 agent，指示其執行上述命令即可。
 
-安裝後重啟 `dsh web`，在「設定 → 通用 → 語言」中選擇「繁體中文」即可。
+安裝後重啟 `dsh web`，在「設定 → 通用 → 語言」中選擇想要的語言即可。
 
 **移除（重要）**：請使用 `dsh plugin remove`，它會同步清理 profile 的 bundle 清單；手動刪除套件可能導致殘留引用令 DSH 無法啟動：
 
 ```bash
-dsh plugin --profile web remove dsh-zh-tw-ui
+dsh plugin --profile web remove dsh-multi-lang-ui
 ```
 
 **npm 安裝（發佈至 npm 後可用）**：
 
 ```bash
-dsh plugin --profile web add dsh-zh-tw-ui
+dsh plugin --profile web add dsh-multi-lang-ui
 ```
 
 ## 運作原理
@@ -85,16 +85,17 @@ node scripts/check-missing-chars.mjs                  # 列出字元表未收錄
 ## 目錄結構
 
 ```
-dsh-zh-tw-ui/
+dsh-multi-lang-ui/
 ├── package.json              # 插件清單（dsh.client.inject / bundle.patch）
 ├── index.mjs                 # Host 側：no-op 入口（純 client 插件）
 ├── cordis.patch.yml          # Host 插件入口
 ├── lib/client.js             # 生成的 browser bundle（請勿手動修改）
 ├── src/
 │   ├── zh-src/               # 抽取自官方的 zh 簡中字典（生成數據）
-│   ├── zh-tw/                # 精譯繁中字典（人工/LLM 翻譯，質量基準）
+│   ├── en/                   # 抽取自官方的 en 字典（各語言翻譯基準）
+│   ├── zh-tw/ ja/ ko/ fr/ de/ es/   # 各語言精譯字典（人工/LLM 翻譯，質量基準）
 │   ├── zh-tw-parts/
-│   │   ├── chars.json        # 簡→繁單字表（運行時備援轉換用）
+│   │   ├── chars.json        # 簡→繁單字表（繁中運行時備援轉換用）
 │   │   ├── simplified-only.txt  # 簡體專用字檢查表（維護用）
 │   │   └── collected-chars.txt  # collect-chars 輸出
 │   └── TERMINOLOGY.md        # 術語對照表（精譯時參考）
@@ -111,7 +112,7 @@ dsh-zh-tw-ui/
 ## 安全性與隱私
 
 - **無網路通訊**：插件不會發起任何網路請求（無 fetch / WebSocket / 上報）；唯一的對外 URL 僅為 README 中的文件連結。
-- **不收集資料**：無 telemetry、無 analytics、無錯誤上報；唯一持久化的資料是瀏覽器 `localStorage["dsh-zh-tw-ui.preference"]`（值僅為 `"zh-TW"` 或不存在）。
+- **不收集資料**：無 telemetry、無 analytics、無錯誤上報；唯一持久化的資料是瀏覽器 `localStorage["dsh-multi-lang-ui.preference"]`（值僅為語言 id，如 `"ja"`）。
 - **不觸及敏感資料**：不讀寫 credentials / tokens / 會話記錄 / 檔案系統；Host 側（`index.mjs`）為 no-op，一無所動。
 - **DOM 轉換為唯讀**：僅修改 DOM 文字節點（text node），無 innerHTML、無注入；輸入框、textarea、contenteditable、代碼塊（pre/code）一律排除，不影響用戶輸入或程式碼。顯示層的會話訊息會被轉換（僅為唯讀顯示效果，底層資料不變），切換回其他語言時自動還原。
 - **零供應鏈風險**：`dependencies` 為空，安裝時不會下載任何新套件；client bundle 完全自包含（零 `require`）；peer 依賴均為 DSH 本機已有的官方套件。
@@ -128,7 +129,7 @@ A：唔使。已安裝插件的版本號由本地 `node_modules` 的 package.jso
 A：無需等待插件更新——運行時簡→繁自動轉換會即時覆蓋任何新字串；第三方插件的簡中字串亦自動轉換。精譯字典可用 `scripts/` 重新生成以保持最佳品質。
 
 **Q：移除插件後 DSH 無法啟動？**
-A：請務必使用 `dsh plugin --profile web remove dsh-zh-tw-ui` 移除（會同步清理 profile 的 bundle 清單）。手動刪除套件可能留下殘留引用令 DSH 啟動失敗。
+A：請務必使用 `dsh plugin --profile web remove dsh-multi-lang-ui` 移除（會同步清理 profile 的 bundle 清單）。手動刪除套件可能留下殘留引用令 DSH 啟動失敗。
 
 ## License
 

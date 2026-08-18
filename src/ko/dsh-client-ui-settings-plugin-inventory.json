@@ -1,0 +1,28 @@
+{
+  "pkg": "dsh-client-ui-settings-plugin-inventory",
+  "entries": [
+    {
+      "ns": "settings.pluginInventory",
+      "dict": {
+        "tab": "Plugin 목록",
+        "loading": "Plugin을 읽는 중…",
+        "error": "Plugin을 일시적으로 사용할 수 없습니다.",
+        "retry": "다시 시도",
+        "search": "Plugin 검색",
+        "catalog": "Plugin 목록",
+        "empty": "사용 가능한 Plugin이 없습니다.",
+        "emptySearch": "일치하는 Plugin이 없습니다.",
+        "enabledTag": "활성화됨",
+        "disabledTag": "비활성화됨",
+        "configuration": "구성",
+        "cordis": "Cordis 상태",
+        "unobserved": "마운트되지 않음",
+        "pending": "의존성 대기 중",
+        "loadingPhase": "로드 중",
+        "active": "마운트됨",
+        "failed": "마운트 실패",
+        "unloading": "언로드 중"
+      }
+    }
+  ]
+}

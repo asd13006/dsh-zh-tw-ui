@@ -1,0 +1,47 @@
+{
+  "pkg": "dsh-client-ui-settings-plugins",
+  "entries": [
+    {
+      "ns": "settings.plugins",
+      "dict": {
+        "nav": "プラグイン",
+        "title": "プラグイン",
+        "intro": "このデプロイメントにインストールされているプラグインを設定・確認します。",
+        "tabs": "プラグインビュー",
+        "configurableTab": "プラグイン設定",
+        "empty": "このデプロイメントにはプラグイン設定がありません。",
+        "overridden": "上書き済み",
+        "reset": "既定値に戻す",
+        "readOnly": "このデプロイメントの設定は読み取り専用です。",
+        "expand": "設定を表示",
+        "collapse": "設定を非表示",
+        "save": "保存",
+        "saving": "保存中…",
+        "discard": "破棄",
+        "unsaved": "未保存",
+        "saveFailed": "デプロイメントがこれらの値を受け入れませんでした。修正できるよう保持されています。",
+        "invalidNumber": "数字を入力してください。空欄の場合は既定値が使われます。",
+        "bashTitle": "シェル",
+        "bashDescription": "エージェントが実行するすべてのコマンドを制限します。",
+        "bashTimeoutMs": "コマンドタイムアウト（ms）",
+        "bashTimeoutMsHint": "1 つのコマンドが終了されるまでに実行できる時間。",
+        "bashMaxOutputBytes": "ストリームごとの出力上限（バイト）",
+        "bashMaxOutputBytesHint": "この上限を超えた出力は失われるのではなく一時ファイルに退避されます。",
+        "agentLoopTitle": "エージェントループ",
+        "agentLoopDescription": "エージェントがツール呼び出しをどのように実行するか。",
+        "agentLoopMaxParallel": "並列ツール呼び出し数",
+        "agentLoopMaxParallelHint": "1 ステップ内で同時に実行できる並列安全な呼び出しの上限。",
+        "webSearchTitle": "ウェブ検索",
+        "webSearchDescription": "DeepSeek の検索プロバイダー。",
+        "webSearchApiKey": "API キー",
+        "webSearchApiKeyHint": "設定ファイルの外部に保存されます。空欄の場合は現在のキーを保持します。",
+        "webSearchApiKeySet": "キーが設定されています。",
+        "webSearchApiKeyUnset": "キーが設定されていません。設定されるまで検索は利用できません。",
+        "webSearchBaseUrl": "エンドポイント",
+        "webSearchBaseUrlHint": "空欄の場合はプロバイダーの既定値が使われます。",
+        "webSearchMaxUses": "リクエストごとの最大検索回数",
+        "webSearchMaxUsesHint": "1 つのリクエストが回答するまでに検索できる回数。"
+      }
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "pkg": "dsh-client-ui-user-questions",
+  "entries": [
+    {
+      "ns": "question",
+      "dict": {
+        "error.incomplete": "Veuillez d'abord répondre à cette question.",
+        "error.unanswered": "Veuillez sélectionner une option ou saisir une réponse personnalisée.",
+        "nav.prev": "Question précédente",
+        "nav.next": "Question suivante",
+        "nav.minimize": "Réduire la carte de question",
+        "nav.maximize": "Développer la carte de question",
+        "nav.cancel": "Abandonner toutes les questions",
+        "option.recommended": "Recommandé",
+        "custom.placeholder": "Saisissez votre réponse",
+        "action.skip": "Passer cette question",
+        "action.next": "Suivant",
+        "plan.header": "Examen du plan",
+        "plan.approve": "Approuver",
+        "plan.decline": "Refuser",
+        "plan.discuss": "En discuter"
+      }
+    }
+  ]
+}

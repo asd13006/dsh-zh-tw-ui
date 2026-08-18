@@ -1,0 +1,47 @@
+{
+  "pkg": "dsh-client-ui-settings-plugins",
+  "entries": [
+    {
+      "ns": "settings.plugins",
+      "dict": {
+        "nav": "Plugins",
+        "title": "Plugins",
+        "intro": "Configurez et consultez les plugins installés dans ce déploiement.",
+        "tabs": "Vues des plugins",
+        "configurableTab": "Configuration des plugins",
+        "empty": "Ce déploiement n'expose aucun paramètre de plugin.",
+        "overridden": "Surchargé",
+        "reset": "Rétablir les valeurs par défaut",
+        "readOnly": "Les paramètres de ce déploiement sont en lecture seule.",
+        "expand": "Afficher les paramètres",
+        "collapse": "Masquer les paramètres",
+        "save": "Enregistrer",
+        "saving": "Enregistrement…",
+        "discard": "Abandonner",
+        "unsaved": "Non enregistré",
+        "saveFailed": "Le déploiement n'a pas accepté ces valeurs ; elles ont été conservées pour que vous puissiez les corriger.",
+        "invalidNumber": "Saisissez un nombre, ou laissez vide pour utiliser la valeur par défaut.",
+        "bashTitle": "Shell",
+        "bashDescription": "Limite chaque commande exécutée par l'agent.",
+        "bashTimeoutMs": "Délai d'expiration de la commande (ms)",
+        "bashTimeoutMsHint": "Durée maximale d'exécution d'une commande avant son interruption.",
+        "bashMaxOutputBytes": "Limite de sortie par flux (octets)",
+        "bashMaxOutputBytesHint": "La sortie qui dépasse cette limite est redirigée vers un fichier temporaire plutôt que perdue.",
+        "agentLoopTitle": "Boucle de l'agent",
+        "agentLoopDescription": "Comment l'agent répartit les appels d'outils.",
+        "agentLoopMaxParallel": "Appels d'outils parallèles",
+        "agentLoopMaxParallelHint": "Nombre maximal d'appels parallèles sûrs exécutés simultanément en une seule étape.",
+        "webSearchTitle": "Recherche web",
+        "webSearchDescription": "Le fournisseur de recherche DeepSeek.",
+        "webSearchApiKey": "Clé API",
+        "webSearchApiKeyHint": "Stockée hors du fichier de paramètres. Laissez vide pour conserver la clé actuelle.",
+        "webSearchApiKeySet": "Une clé est configurée.",
+        "webSearchApiKeyUnset": "Aucune clé n'est configurée ; la recherche est indisponible tant qu'une clé n'est pas définie.",
+        "webSearchBaseUrl": "Point de terminaison",
+        "webSearchBaseUrlHint": "Laissez vide pour utiliser l'adresse par défaut du fournisseur.",
+        "webSearchMaxUses": "Nombre maximal de recherches par requête",
+        "webSearchMaxUsesHint": "Combien de fois une requête peut effectuer une recherche avant de devoir répondre."
+      }
+    }
+  ]
+}

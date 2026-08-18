@@ -1,0 +1,22 @@
+{
+  "pkg": "dsh-client-ui-message-feedback",
+  "entries": [
+    {
+      "ns": "feedback",
+      "dict": {
+        "action.like": "良い回答",
+        "action.likeActive": "評価を削除",
+        "action.dislike": "悪い回答",
+        "action.dislikeActive": "評価を削除",
+        "note.open": "メモを追加",
+        "note.placeholder": "良かった点や問題点は？（任意）",
+        "note.save": "保存",
+        "note.cancel": "キャンセル",
+        "note.aria": "フィードバックメモ",
+        "error.conflict": "このフィードバックは別の場所で変更されたため、最新の状態を表示しています",
+        "error.load": "フィードバックを読み込めませんでした",
+        "error.generic": "フィードバックを保存できませんでした"
+      }
+    }
+  ]
+}

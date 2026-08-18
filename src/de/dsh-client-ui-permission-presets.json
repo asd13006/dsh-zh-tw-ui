@@ -1,0 +1,29 @@
+{
+  "pkg": "dsh-client-ui-permission-presets",
+  "entries": [
+    {
+      "ns": "permission.access",
+      "dict": {
+        "confirm.title": "Full access aktivieren?",
+        "confirm.description": "Full access reduziert Bestätigungsschritte und erlaubt dem Agenten, mehr Aktionen direkt auszuführen, darunter sensible Vorgänge, Dateiänderungen oder externe Befehle. Nur verwenden, wenn Sie der aktuellen Aufgabe vertrauen.",
+        "confirm.acknowledge": "Ich verstehe die Risiken und möchte fortfahren",
+        "confirm.cancel": "Abbrechen",
+        "confirm.enable": "Full access aktivieren"
+      }
+    },
+    {
+      "ns": "settings.permission",
+      "dict": {
+        "title": "Berechtigung",
+        "description": "Standard-Berechtigungsmodus für neue Sessions auswählen",
+        "loading": "Wird geladen",
+        "unavailable": "Nicht verfügbar",
+        "confirm.title": "Full access aktivieren?",
+        "confirm.description": "Full access reduziert die Bestätigungsschritte neuer Sessions und erlaubt es, mehr Aktionen direkt auszuführen, einschließlich sensibler Operationen, Dateiänderungen oder externer Befehle. Verwenden Sie es nur, wenn Sie den nachfolgenden Aufgaben vertrauen.",
+        "confirm.acknowledge": "Ich verstehe die Risiken und möchte fortfahren",
+        "confirm.cancel": "Abbrechen",
+        "confirm.enable": "Full access aktivieren"
+      }
+    }
+  ]
+}

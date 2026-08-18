@@ -1,0 +1,28 @@
+{
+  "pkg": "dsh-client-ui-settings-plugin-inventory",
+  "entries": [
+    {
+      "ns": "settings.pluginInventory",
+      "dict": {
+        "tab": "プラグイン一覧",
+        "loading": "プラグインを読み込み中…",
+        "error": "プラグインが一時的に利用できません。",
+        "retry": "再試行",
+        "search": "プラグインを検索",
+        "catalog": "プラグイン一覧",
+        "empty": "利用可能なプラグインがありません。",
+        "emptySearch": "一致するプラグインがありません。",
+        "enabledTag": "有効",
+        "disabledTag": "無効",
+        "configuration": "設定",
+        "cordis": "Cordis 状態",
+        "unobserved": "未マウント",
+        "pending": "依存関係待ち",
+        "loadingPhase": "読み込み中",
+        "active": "マウント済み",
+        "failed": "マウント失敗",
+        "unloading": "アンロード中"
+      }
+    }
+  ]
+}

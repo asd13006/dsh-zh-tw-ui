@@ -1,6 +1,6 @@
 {
-  "name": "dsh-zh-tw-ui",
-  "description": "DSH Web UI 繁體中文插件：新增「繁體中文」語言選項，將全部介面字串翻譯成地道繁體中文（英文保持英文）",
+  "name": "dsh-multi-lang-ui",
+  "description": "DSH Web UI 多語言插件：新增繁體中文/日本語/한국어/Français/Deutsch/Español 語言選項，官方介面字串逐條精譯，英文內容保持英文",
   "version": "0.1.0",
   "type": "module",
   "main": "./index.mjs",
@@ -37,8 +37,17 @@
     "dsh",
     "locale",
     "i18n",
+    "localization",
+    "multilingual",
     "traditional-chinese",
     "zh-TW",
+    "japanese",
+    "korean",
+    "french",
+    "german",
+    "spanish",
+    "日本語",
+    "한국어",
     "繁體中文"
   ],
   "files": [

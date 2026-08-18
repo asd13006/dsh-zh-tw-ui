@@ -1,0 +1,27 @@
+{
+  "pkg": "dsh-client-ui-model-selection",
+  "entries": [
+    {
+      "ns": "model",
+      "dict": {
+        "command.description": "Modell für diese Konversation auswählen",
+        "option.loadError": "Katalog konnte nicht geladen werden: {message}",
+        "trigger.fallback": "Modell auswählen",
+        "trigger.selectAria": "Modell auswählen",
+        "trigger.aria": "Modell auswählen, aktuell {model}",
+        "trigger.ariaEffort": "Modell auswählen, aktuell {model}, Denkaufwand {effort}",
+        "menu.aria": "Modell und Denkaufwand",
+        "menu.model": "Modell",
+        "menu.effort": "Denkaufwand",
+        "effort.providerDefault": "Standard",
+        "status.loading": "Modellliste wird aktualisiert…",
+        "error.action": "Modellvorgang fehlgeschlagen: {message}",
+        "action.reload": "Neu laden",
+        "warning.groupLoad": "{name} konnte nicht geladen werden: {message}",
+        "empty.models": "Keine Modelle verfügbar.",
+        "blocked.composer": "Dieses Modell ist nicht verfügbar — wählen Sie ein Modell, um fortzufahren",
+        "empty.efforts": "Dieses Modell bietet keine Denkaufwand-Stufen."
+      }
+    }
+  ]
+}

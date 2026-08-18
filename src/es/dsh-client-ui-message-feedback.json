@@ -1,0 +1,22 @@
+{
+  "pkg": "dsh-client-ui-message-feedback",
+  "entries": [
+    {
+      "ns": "feedback",
+      "dict": {
+        "action.like": "Buena respuesta",
+        "action.likeActive": "Quitar valoración",
+        "action.dislike": "Mala respuesta",
+        "action.dislikeActive": "Quitar valoración",
+        "note.open": "Añadir una nota",
+        "note.placeholder": "¿Qué estuvo bien o qué salió mal? (opcional)",
+        "note.save": "Guardar",
+        "note.cancel": "Cancelar",
+        "note.aria": "Nota de valoración",
+        "error.conflict": "Esta valoración cambió en otro lugar; se muestra el estado más reciente",
+        "error.load": "No se pudo cargar la valoración",
+        "error.generic": "No se pudo guardar la valoración"
+      }
+    }
+  ]
+}

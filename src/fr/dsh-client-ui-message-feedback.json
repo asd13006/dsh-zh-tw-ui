@@ -1,0 +1,22 @@
+{
+  "pkg": "dsh-client-ui-message-feedback",
+  "entries": [
+    {
+      "ns": "feedback",
+      "dict": {
+        "action.like": "Bonne réponse",
+        "action.likeActive": "Retirer la note",
+        "action.dislike": "Mauvaise réponse",
+        "action.dislikeActive": "Retirer la note",
+        "note.open": "Ajouter une note",
+        "note.placeholder": "Qu'est-ce qui était bien, ou qu'est-ce qui a mal tourné ? (facultatif)",
+        "note.save": "Enregistrer",
+        "note.cancel": "Annuler",
+        "note.aria": "Note de retour",
+        "error.conflict": "Ce retour a été modifié ailleurs ; l'état le plus récent est affiché",
+        "error.load": "Impossible de charger le retour",
+        "error.generic": "Impossible d'enregistrer le retour"
+      }
+    }
+  ]
+}

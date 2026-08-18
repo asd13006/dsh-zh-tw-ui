@@ -1,0 +1,43 @@
+{
+  "pkg": "dsh-client-ui-subagent",
+  "entries": [
+    {
+      "ns": "subagent",
+      "dict": {
+        "diagnostic.corrupt": "registro de sesión dañado",
+        "diagnostic.unsupported": "versión de registro de subagente no compatible",
+        "diagnostic.unavailable": "registro de sesión temporalmente no disponible",
+        "duration.seconds": "{seconds}s",
+        "duration.minutes": "{minutes}m {seconds}s",
+        "duration.hours": "{hours}h {minutes}m {seconds}s",
+        "duration.days": "{days}d",
+        "duration.daysHours": "{days}d {hours}h",
+        "duration.months": "~{months} m",
+        "duration.monthsDays": "~{months} m {days}d",
+        "duration.years": "~{years} a",
+        "duration.yearsMonths": "~{years} a {months} m",
+        "duration.exactDays": "{days}d {hours}h {minutes}m {seconds}s",
+        "duration.exactTitle": "Duración activa total: {duration}",
+        "loading.label": "Cargando subagentes…",
+        "loading.aria": "Cargando subagentes",
+        "load.error": "No se pudieron cargar los subagentes",
+        "retry": "Reintentar",
+        "mode.oneShot": "de un solo uso",
+        "mode.continuable": "continuable",
+        "activity.running": "en ejecución",
+        "activity.inactive": "inactivo",
+        "branch.collapse": "Contraer los descendientes de {label}",
+        "branch.expand": "Expandir los descendientes de {label}",
+        "count.total.one": "{count} subagente",
+        "count.total.other": "{count} subagentes",
+        "count.running.one": "{count} subagente en ejecución",
+        "count.running.other": "{count} subagentes en ejecución",
+        "tree.aria": "Sesiones de subagentes",
+        "readonly.oneShot.title": "Registro de subagente de un solo uso",
+        "readonly.title": "Este subagente es de solo lectura por ahora",
+        "readonly.oneShot.body": "Las tareas de un solo uso no aceptan mensajes posteriores; revisa aquí el registro completo de la ejecución.",
+        "readonly.body": "La sesión principal está sin conexión; vuelve a abrirla para seguir enviando mensajes."
+      }
+    }
+  ]
+}

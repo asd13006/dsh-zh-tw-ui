@@ -1,0 +1,14 @@
+{
+  "pkg": "dsh-client-ui-plan",
+  "entries": [
+    {
+      "ns": "plan",
+      "dict": {
+        "chip.on.aria": "プランモードがオンの状態です。押すとオフになります",
+        "chip.on.title": "プランモードオン — クリックでオフ（/plan off）",
+        "chip.off.aria": "プランモードがオフの状態です。押すとオンになります",
+        "chip.off.title": "プランモードオフ — クリックでオン（/plan）"
+      }
+    }
+  ]
+}

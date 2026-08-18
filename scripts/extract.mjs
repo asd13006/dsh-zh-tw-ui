@@ -384,7 +384,9 @@ function parseObjectProps(objText) {
 
 // ---------- 主流程 ----------
 const outDir = path.join(import.meta.dirname, "..", "src", "zh-src");
+const enOutDir = path.join(import.meta.dirname, "..", "src", "en");
 fs.mkdirSync(outDir, { recursive: true });
+fs.mkdirSync(enOutDir, { recursive: true });
 
 const report = [];
 let totalKeys = 0;
@@ -404,45 +406,54 @@ for (const pkg of PKGS) {
     if (args.length < 2) continue;
     let ns = parseNsArg(args[0], constMap, text);
     if (typeof ns !== "string" || ns === "locale") continue; // 循环变量
-    if (seenNs.has(ns)) continue;
-    let zhDict = null;
+    let zhDict = null, enDict = null;
     const second = args[1].trim();
     if (second.startsWith('"') || second.startsWith("'")) {
-      // register(NS, "zh", {...})
+      // register(NS, "zh"/"en", {...})
       const localeName = parseNsArg(second, constMap, text);
-      if (localeName === "zh" && args[2]) {
-        try { zhDict = evalObject(args[2], constMap, text); } catch (e) { report.push({ pkg, ns, error: "inline zh eval: " + e.message }); }
+      if (args[2]) {
+        if (localeName === "zh") {
+          try { zhDict = evalObject(args[2], constMap, text); } catch (e) { report.push({ pkg, ns, error: "inline zh eval: " + e.message }); }
+        } else if (localeName === "en") {
+          try { enDict = evalObject(args[2], constMap, text); } catch (e) { report.push({ pkg, ns, error: "inline en eval: " + e.message }); }
+        }
       }
     } else if (second.startsWith("{")) {
       // register(NS, { zh: ..., en: ... }) 或 shorthand { zh, en }
       const props = parseObjectProps(second);
-      const zhProp = props.find((p) => p.name === "zh");
-      if (zhProp) {
-        if (zhProp.value === null) {
-          // shorthand：zh 即标识符
-          const raw = resolveConstValue(constMap, text, "zh");
-          if (raw !== undefined) {
-            try { zhDict = evalObject(raw, constMap, text); } catch (e) { report.push({ pkg, ns, error: `const zh: ` + e.message }); }
-          } else { report.push({ pkg, ns, error: "shorthand zh const not found" }); }
-        } else if (zhProp.value.startsWith("{")) {
-          try { zhDict = evalObject(zhProp.value, constMap, text); } catch (e) { report.push({ pkg, ns, error: "inline obj zh: " + e.message }); }
+      const resolveProp = (prop) => {
+        if (prop === undefined) return undefined;
+        if (prop.value === null) {
+          // shorthand：名称即标识符
+          const raw = resolveConstValue(constMap, text, prop.name);
+          if (raw === undefined) { report.push({ pkg, ns, error: `shorthand ${prop.name} const not found` }); return undefined; }
+          try { return evalObject(raw, constMap, text); } catch (e) { report.push({ pkg, ns, error: `const ${prop.name}: ` + e.message }); return undefined; }
+        } else if (prop.value.startsWith("{")) {
+          try { return evalObject(prop.value, constMap, text); } catch (e) { report.push({ pkg, ns, error: `inline obj ${prop.name}: ` + e.message }); return undefined; }
         } else {
-          const raw = resolveConstValue(constMap, text, zhProp.value);
-          if (raw !== undefined) {
-            try { zhDict = evalObject(raw, constMap, text); } catch (e) { report.push({ pkg, ns, error: `const ${zhProp.value}: ` + e.message }); }
-          } else { report.push({ pkg, ns, error: `const ${zhProp.value} not found` }); }
+          const raw = resolveConstValue(constMap, text, prop.value);
+          if (raw === undefined) { report.push({ pkg, ns, error: `const ${prop.value} not found` }); return undefined; }
+          try { return evalObject(raw, constMap, text); } catch (e) { report.push({ pkg, ns, error: `const ${prop.value}: ` + e.message }); return undefined; }
         }
-      } else {
-        report.push({ pkg, ns, error: "no zh key in register object" });
-      }
+      };
+      zhDict = resolveProp(props.find((p) => p.name === "zh"));
+      enDict = resolveProp(props.find((p) => p.name === "en"));
+      if (zhDict === null && enDict === null) report.push({ pkg, ns, error: "no zh/en key in register object" });
     }
-    if (zhDict !== null) {
-      entries.push({ ns, dict: zhDict });
+    if (zhDict !== null || enDict !== null) {
+      // 同一 ns 可能有多個 register call（例如 inline "zh" 與 inline "en" 分開寫），合併而非跳過
+      const existing = entries.find((e) => e.ns === ns);
+      if (existing) {
+        if (zhDict !== null && existing.zh === null) existing.zh = zhDict;
+        if (enDict !== null && existing.en === null) existing.en = enDict;
+      } else {
+        entries.push({ ns, zh: zhDict, en: enDict });
+      }
       seenNs.add(ns);
     }
   }
 
-  // 形态 C：dictionaries = [["zh", {...}], ...] （directory-picker-browse）
+  // 形态 C：dictionaries = [["zh", {...}], ["en", {...}], ...] （directory-picker-browse）
   const dictArrRe = /const\s+dictionaries\s*=\s*(\[[^]*?\]);/;
   const dictArrM = dictArrRe.exec(text);
   if (dictArrM && !seenNs.has("directory-picker")) {
@@ -451,18 +462,22 @@ for (const pkg of PKGS) {
     const nsConst = /const\s+LOCALE_NS\s*=\s*"([^"]+)"/.exec(text);
     if (nsConst) ns = nsConst[1];
     const zhMatch = dictArrM[1].match(/\[\s*"zh"\s*,\s*(\{[^]*?\})\s*\]/);
-    if (zhMatch) {
-      try { entries.push({ ns, dict: evalObject(zhMatch[1], constMap, text) }); seenNs.add(ns); }
-      catch (e) { report.push({ pkg, ns, error: "dictionaries zh: " + e.message }); }
+    const enMatch = dictArrM[1].match(/\[\s*"en"\s*,\s*(\{[^]*?\})\s*\]/);
+    const dict = { zh: zhMatch ? evalObject(zhMatch[1], constMap, text) : null, en: enMatch ? evalObject(enMatch[1], constMap, text) : null };
+    if (dict.zh !== null || dict.en !== null) {
+      try { entries.push({ ns, zh: dict.zh, en: dict.en }); seenNs.add(ns); }
+      catch (e) { report.push({ pkg, ns, error: "dictionaries: " + e.message }); }
     }
   }
 
   if (entries.length === 0) { report.push({ pkg, error: "no entries extracted" }); continue; }
-  const out = { pkg, entries };
-  fs.writeFileSync(path.join(outDir, pkg + ".json"), JSON.stringify(out, null, 2), "utf8");
-  const keyCount = entries.reduce((n, e) => n + Object.keys(e.dict).length, 0);
+  const zhOut = { pkg, entries: entries.filter((e) => e.zh !== null).map((e) => ({ ns: e.ns, dict: e.zh })) };
+  const enOut = { pkg, entries: entries.filter((e) => e.en !== null).map((e) => ({ ns: e.ns, dict: e.en })) };
+  fs.writeFileSync(path.join(outDir, pkg + ".json"), JSON.stringify(zhOut, null, 2), "utf8");
+  fs.writeFileSync(path.join(enOutDir, pkg + ".json"), JSON.stringify(enOut, null, 2), "utf8");
+  const keyCount = zhOut.entries.reduce((n, e) => n + Object.keys(e.dict).length, 0);
   totalKeys += keyCount;
-  report.push({ pkg, namespaces: entries.map((e) => `${e.ns}(${Object.keys(e.dict).length})`).join(", "), keys: keyCount });
+  report.push({ pkg, namespaces: zhOut.entries.map((e) => `${e.ns}(${Object.keys(e.dict).length})`).join(", "), keys: keyCount });
 }
 
 console.log(JSON.stringify(report, null, 2));

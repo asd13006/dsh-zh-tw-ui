@@ -1,0 +1,17 @@
+{
+  "pkg": "dsh-client-ui-commands",
+  "entries": [
+    {
+      "ns": "command",
+      "dict": {
+        "search.placeholder": "검색…",
+        "search.aria": "옵션 필터링",
+        "status.loading": "옵션 불러오는 중…",
+        "status.applying": "적용 중…",
+        "status.empty": "옵션 없음",
+        "overlay.aria": "/{command} 옵션",
+        "listbox.aria": "/{command} 일치 항목"
+      }
+    }
+  ]
+}

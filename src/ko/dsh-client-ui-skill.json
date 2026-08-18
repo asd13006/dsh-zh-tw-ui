@@ -1,0 +1,15 @@
+{
+  "pkg": "dsh-client-ui-skill",
+  "entries": [
+    {
+      "ns": "skill",
+      "dict": {
+        "row.running": "스킬 불러오는 중",
+        "row.failed": "스킬 불러오기 실패",
+        "row.stopped": "스킬 불러오기 중단됨",
+        "row.instructions": "지침",
+        "menu.userOnly": "사용자 전용"
+      }
+    }
+  ]
+}

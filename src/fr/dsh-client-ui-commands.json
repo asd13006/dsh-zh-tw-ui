@@ -1,0 +1,17 @@
+{
+  "pkg": "dsh-client-ui-commands",
+  "entries": [
+    {
+      "ns": "command",
+      "dict": {
+        "search.placeholder": "Rechercher…",
+        "search.aria": "Filtrer les options",
+        "status.loading": "Chargement des options…",
+        "status.applying": "Application…",
+        "status.empty": "Aucune option",
+        "overlay.aria": "Options de /{command}",
+        "listbox.aria": "Correspondances pour /{command}"
+      }
+    }
+  ]
+}

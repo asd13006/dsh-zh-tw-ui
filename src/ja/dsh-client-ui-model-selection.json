@@ -1,0 +1,27 @@
+{
+  "pkg": "dsh-client-ui-model-selection",
+  "entries": [
+    {
+      "ns": "model",
+      "dict": {
+        "command.description": "この会話で使用するモデルを選択",
+        "option.loadError": "カタログの読み込みに失敗しました: {message}",
+        "trigger.fallback": "モデルを選択",
+        "trigger.selectAria": "モデルを選択",
+        "trigger.aria": "モデルを選択、現在は {model}",
+        "trigger.ariaEffort": "モデルを選択、現在は {model}、推論レベル {effort}",
+        "menu.aria": "モデルと推論レベル",
+        "menu.model": "モデル",
+        "menu.effort": "推論レベル",
+        "effort.providerDefault": "デフォルト",
+        "status.loading": "モデル一覧を更新中…",
+        "error.action": "モデル操作に失敗しました: {message}",
+        "action.reload": "再読み込み",
+        "warning.groupLoad": "{name} の読み込みに失敗しました: {message}",
+        "empty.models": "利用可能なモデルがありません。",
+        "blocked.composer": "このモデルは利用できません — 続行するにはモデルを選択してください",
+        "empty.efforts": "このモデルには推論レベルの設定がありません。"
+      }
+    }
+  ]
+}

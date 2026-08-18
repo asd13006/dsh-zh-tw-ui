@@ -1,0 +1,15 @@
+{
+  "pkg": "dsh-client-ui-deliverables",
+  "entries": [
+    {
+      "ns": "deliverables",
+      "dict": {
+        "produced.label": "생성물",
+        "produced.moreOne": "+ 파일 1개",
+        "produced.more": "+ 파일 {count}개",
+        "produced.open": "{name} 열기",
+        "produced.showInFolder": "폴더에서 보기"
+      }
+    }
+  ]
+}

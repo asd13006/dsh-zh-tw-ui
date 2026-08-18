@@ -1,0 +1,47 @@
+{
+  "pkg": "dsh-client-ui-settings-plugins",
+  "entries": [
+    {
+      "ns": "settings.plugins",
+      "dict": {
+        "nav": "Plugins",
+        "title": "Plugins",
+        "intro": "Plugins dieser Bereitstellung konfigurieren und einsehen.",
+        "tabs": "Plugin-Ansichten",
+        "configurableTab": "Plugin-Konfiguration",
+        "empty": "Diese Bereitstellung stellt keine Plugin-Einstellungen bereit.",
+        "overridden": "Überschrieben",
+        "reset": "Auf Standard zurücksetzen",
+        "readOnly": "Die Einstellungen dieser Bereitstellung sind schreibgeschützt.",
+        "expand": "Einstellungen anzeigen",
+        "collapse": "Einstellungen ausblenden",
+        "save": "Speichern",
+        "saving": "Wird gespeichert…",
+        "discard": "Verwerfen",
+        "unsaved": "Ungespeichert",
+        "saveFailed": "Die Bereitstellung hat diese Werte nicht akzeptiert; sie wurden zur Korrektur für Sie aufbewahrt.",
+        "invalidNumber": "Geben Sie eine Zahl ein oder lassen Sie das Feld leer, um den Standardwert zu verwenden.",
+        "bashTitle": "Shell",
+        "bashDescription": "Begrenzt jeden Befehl, den der Agent ausführt.",
+        "bashTimeoutMs": "Befehls-Timeout (ms)",
+        "bashTimeoutMsHint": "Wie lange ein Befehl laufen darf, bevor er beendet wird.",
+        "bashMaxOutputBytes": "Ausgabelimit pro Stream (Bytes)",
+        "bashMaxOutputBytesHint": "Ausgabe über dieses Limit hinaus wird in eine temporäre Datei umgeleitet, statt verloren zu gehen.",
+        "agentLoopTitle": "Agent-Schleife",
+        "agentLoopDescription": "Wie der Agent Tool-Aufrufe verteilt.",
+        "agentLoopMaxParallel": "Parallele Tool-Aufrufe",
+        "agentLoopMaxParallelHint": "Obergrenze für parallel sichere Aufrufe, die in einem Schritt gleichzeitig laufen dürfen.",
+        "webSearchTitle": "Websuche",
+        "webSearchDescription": "Der DeepSeek-Suchanbieter.",
+        "webSearchApiKey": "API-Schlüssel",
+        "webSearchApiKeyHint": "Wird außerhalb der Einstellungsdatei gespeichert. Leer lassen, um den aktuellen Schlüssel zu behalten.",
+        "webSearchApiKeySet": "Ein Schlüssel ist konfiguriert.",
+        "webSearchApiKeyUnset": "Es ist kein Schlüssel konfiguriert; die Suche ist nicht verfügbar, bis einer eingerichtet ist.",
+        "webSearchBaseUrl": "Endpunkt",
+        "webSearchBaseUrlHint": "Leer lassen, um den Standard des Anbieters zu verwenden.",
+        "webSearchMaxUses": "Max. Suchvorgänge pro Anfrage",
+        "webSearchMaxUsesHint": "Wie oft eine Anfrage suchen darf, bevor sie antworten muss."
+      }
+    }
+  ]
+}
